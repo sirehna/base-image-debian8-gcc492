@@ -56,34 +56,24 @@ RUN git clone https://github.com/boostorg/geometry && \
     rm -rf geometry
 
 # Ipopt
+# http://www.coin-or.org/Ipopt/documentation/node10.html
 ENV IPOPT_VERSION=3.12.9
-RUN \
-    ##################
-    # Download ipopt source
-    # http://www.coin-or.org/Ipopt/documentation/node10.html
-    ##################
-    gfortran --version && \
+RUN gfortran --version && \
     wget http://www.coin-or.org/download/source/Ipopt/Ipopt-$IPOPT_VERSION.tgz -O ipopt_src.tgz && \
     mkdir -p ipopt_src && \
     tar -xf ipopt_src.tgz --strip 1 -C ipopt_src && \
     rm -rf ipopt_src.tgz && \
     cd ipopt_src && \
-    # Downloading BLAS, LAPACK, and ASL
     cd ThirdParty/Blas && \
         ./get.Blas && \
     cd ../Lapack && \
         ./get.Lapack && \
     cd ../ASL && \
         ./get.ASL && \
-    # Downloading MUMPS Linear Solver
     cd ../Mumps && \
         ./get.Mumps && \
-    # Get METIS
     cd ../Metis && \
         ./get.Metis && \
-    ##################
-    # Compile ipopt
-    ##################
     cd ../../ && \
     mkdir build && \
     cd build && \
