@@ -1,3 +1,10 @@
+# Encrypted key doc
+#   https://docs.travis-ci.com/user/encryption-keys
+#
+# Encrypted key commands
+#   gem install travis
+#   travis pubkey
+#   travis encrypt DOCKER_PASSWORD=*********** --add
 sudo: required
 services:
 - docker
