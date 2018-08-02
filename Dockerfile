@@ -94,3 +94,23 @@ RUN \
     cd .. && \
     cd .. && \
     rm -rf ipopt_src
+
+RUN wget https://github.com/eigenteam/eigen-git-mirror/archive/3.3.5.tar.gz -O eigen.tgz && \
+    mkdir -p /opt/eigen && \
+    tar -xzf eigen.tgz --strip 1 -C /opt/eigen && \
+    rm -rf eigen.tgz
+
+RUN wget https://github.com/jbeder/yaml-cpp/archive/release-0.3.0.tar.gz -O yaml_cpp.tgz && \
+    mkdir -p /opt/yaml_cpp && \
+    tar -xzf yaml_cpp.tgz --strip 1 -C /opt/yaml_cpp && \
+    rm -rf yaml_cpp.tgz
+
+RUN wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz -O googletest.tgz && \
+    mkdir -p /opt/googletest && \
+    tar -xzf googletest.tgz --strip 1 -C /opt/googletest && \
+    rm -rf googletest.tgz
+
+RUN wget https://github.com/zaphoyd/websocketpp/archive/0.7.0.tar.gz -O websocketpp.tgz && \
+    mkdir -p /opt/websocketpp && \
+    tar -xzf websocketpp.tgz --strip 1 -C /opt/websocketpp && \
+    rm -rf websocketpp.tgz
