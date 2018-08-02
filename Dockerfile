@@ -106,3 +106,8 @@ RUN wget https://github.com/zaphoyd/websocketpp/archive/0.7.0.tar.gz -O websocke
     mkdir -p /opt/websocketpp && \
     tar -xzf websocketpp.tgz --strip 1 -C /opt/websocketpp && \
     rm -rf websocketpp.tgz
+
+RUN wget http://www.netlib.org/f2c/src.tgz -O f2c.tgz && \
+    mkdir -p /opt/f2c && \
+    tar -xzf f2c.tgz --strip 1 -C /opt/f2c && \
+    rm -rf f2c.tgz
