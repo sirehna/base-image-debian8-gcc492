@@ -111,3 +111,8 @@ RUN wget http://www.netlib.org/f2c/src.tgz -O f2c.tgz && \
     mkdir -p /opt/f2c && \
     tar -xzf f2c.tgz --strip 1 -C /opt/f2c && \
     rm -rf f2c.tgz
+
+RUN wget https://sourceforge.net/projects/geographiclib/files/distrib/GeographicLib-1.49.tar.gz/download -O geographiclib.tgz && \
+    mkdir -p /opt/geographiclib && \
+    tar -xzf geographiclib.tgz --strip 1 -C /opt/geographiclib && \
+    rm -rf geographiclib.tgz
