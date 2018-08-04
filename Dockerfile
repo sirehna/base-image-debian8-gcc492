@@ -70,12 +70,8 @@ RUN gfortran --version && \
         ./get.Blas && \
     cd ../Lapack && \
         ./get.Lapack && \
-    cd ../ASL && \
-        ./get.ASL && \
     cd ../Mumps && \
         ./get.Mumps && \
-    cd ../Metis && \
-        ./get.Metis && \
     cd ../../ && \
     mkdir build && \
     cd build && \
