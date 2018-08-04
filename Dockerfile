@@ -119,6 +119,11 @@ RUN mkdir -p /opt/libf2c && \
     rm -rf libf2c.zip
 
 RUN wget https://sourceforge.net/projects/geographiclib/files/distrib/GeographicLib-1.49.tar.gz/download -O geographiclib.tgz && \
+    mkdir -p /opt/geographiclib_149 && \
+    tar -xzf geographiclib.tgz --strip 1 -C /opt/geographiclib_149 && \
+    rm -rf geographiclib.tgz
+
+RUN wget https://sourceforge.net/projects/geographiclib/files/distrib/archive/GeographicLib-1.30.tar.gz/download -O geographiclib.tgz && \
     mkdir -p /opt/geographiclib && \
     tar -xzf geographiclib.tgz --strip 1 -C /opt/geographiclib && \
     rm -rf geographiclib.tgz
