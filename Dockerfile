@@ -21,12 +21,12 @@ RUN set -x && \
     rm -rf /tmp/* /var/tmp/* && \
     rm -rf /var/lib/apt/lists
 
-RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 100
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 100
-RUN update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-4.9 100
-RUN update-alternatives --set g++ /usr/bin/g++-4.9
-RUN update-alternatives --set gcc /usr/bin/gcc-4.*
-RUN update-alternatives --set gfortran /usr/bin/gfortran-4.*
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 100 && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 100 && \
+    update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-4.9 100 && \
+    update-alternatives --set g++ /usr/bin/g++-4.9 && \
+    update-alternatives --set gcc /usr/bin/gcc-4.* && \
+    update-alternatives --set gfortran /usr/bin/gfortran-4.*
 
 RUN mkdir -p /opt
 WORKDIR /opt
