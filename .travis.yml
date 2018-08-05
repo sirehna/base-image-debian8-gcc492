@@ -21,9 +21,9 @@ script:
 - docker build --pull --cache-from gjacquenot/ssc_build --tag gjacquenot/ssc_build .
 #  - docker run gjacquenot/ssc_build
 after_script:
-  - docker images
+- docker images
 after_success:
 - if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker login -u $DOCKER_USERNAME -p
-  $DOCKER_PASSWORD ; make push-image ; fi
+  $DOCKER_PASSWORD ; docker push gjacquenot/ssc_build ; fi
 notifications:
   email: true
