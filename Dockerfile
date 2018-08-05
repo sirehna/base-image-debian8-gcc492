@@ -5,6 +5,7 @@ RUN set -x && \
     apt-get install --yes --no-install-recommends \
         build-essential \
         ca-certificates \
+        curl \
         g++-4.9 \
         gcc-4.9 \
         gfortran-4.9 \
