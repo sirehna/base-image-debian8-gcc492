@@ -48,7 +48,7 @@ RUN wget http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_1_60_0.t
     cd boost_src && \
     ./bootstrap.sh && \
     ./b2 cxxflags=-fPIC --without-mpi --without-python link=static threading=single threading=multi --layout=tagged --prefix=/opt/boost install && \
-    cd .. \
+    cd .. && \
     rm -rf boost_src
 # BOOST Geometry extension
 RUN git clone https://github.com/boostorg/geometry && \
