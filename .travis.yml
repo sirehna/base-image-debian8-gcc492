@@ -10,20 +10,27 @@ services:
 - docker
 env:
   global:
-  - DOCKER_USERNAME=gjacquenot
-  - secure: SBjR7919hbJIprFX6dFXji5BS+OU+POwB+rz+IHDx9yLLl5rietutb3K1nR3KrlKmozDKkaVZDCL9qtz6LxLNCMmugwlLtS3LHlPttEa0X2XdZnRpeBthnuyoN01In7Sx/32vzW3RaXzpOgu6E3ItTqF2EP2Abeh+1aVI0uyfk6QAlFGEVSKlNabIiBED6zh/mlC/gaf5NEYBo2ucQMT7WhHYU7NTizn6ZI9JQGAE+dQzrCds1w90bkeoA6dmgv4VwFiFlfPeoRuoVlbpSsHBuBeAZxEhppQrWm5iTNfeibLyFWuBXdp44+kVA4/xcUdqGu9/L4eSeF9JOayWTLvvfXBYbABd1C69JNLxyDb+epVwWOEnuPcu262Z6LZPBZJE5ln49Ty8DgZxWVgg2iaT07NdnD/WdaTtd32/j322CrowhkxFFrDAZ9gEEUzkwhZc3CXrEXn4d7bf1R+96ijwTtx3WBSkQS5NygH6FJVQ9yADnhIcVEfyMuc7ax8yi3Z8Pqs6FG5ItegNEiPrtH/ybjEVOzfVUhcr/axe369WOT7p69ZT1YC3zsl6/sY9lnLsh2sKKVUpkIFRpFmYWqqUYINwUuORWFTsHYKIlM4qZzwbGUnA+gSIH4VGnGUvjn2TkGqIv3QcXNRqb2pfX6nY1hlr856WVdPoHKHeI7MHHU=
+  - DOCKER_USERNAME=guillaumejacquenot
+  - secure: "qaNGWHQn2lkTRh2PymqSk8jW7GPXsMw7rtC5EmVswqcgqywEoORGSodxkfarIQjzp48QpoQOk6knkiLvMzLn0TgSqpV3uohPLXR90Pf3E5wjh/GQm5LaO5rle0qBPlNcE8CVWaCEzvcVtmm01mw0LQRCKIZKxNWNQF+enwZNEglfpoeTDugTi7LAFkMio+GB3qm4iYtK1e7jytjoVhDqUc9sQRxy5m3i1JpXfVLW4B5HqnP6loYLdlUzx+SYtK8wWb9R0gNtq1QufVo1cMZqmcLE2YOKT8RY4PuYHAJB3hW75Ur72HlqnJLh9gZ1OTKkFwEsApmK/0nTgVgMO5JzArvbnRNUC9lzOMRzwgF7iZXDZuvIFZ96yFO8seayxPXVZcz7ilq0VkP48+LODDjhrdDseqVeKkKrcipftnQsCjdP4SmgsMpLDDxF2Zz9w+MejgDNZi7OZEN+03lRkSoS8oCYHjCYC6EznFw9lpxk6ULrDWJAd0hFcSCcyXLdOx9JZNs5tp65bRsA4yju0kIzHhUu73OaG5epJ+L/s0BnOMLKXEmtaTlKQ6P+fSACq/Q8KNYBTl0lphYg7j4xbBxYKqwq4kynWCx0HEWaa/Z6MiGIMj6W/YMGRElaf6sRJe1xIcK+IayAAYPAC8mQnCaUGW2QEPpRL3EFpefo/ZaXteQ="
+
 before_install:
 - echo "Before install"
 
 before_script:
-- docker pull gjacquenot/ssc_build || true
+- docker pull sirehna/base-image-debian8-gcc492 || true
+
 script:
-- docker build --pull --cache-from gjacquenot/ssc_build --tag gjacquenot/ssc_build .
-#  - docker run gjacquenot/ssc_build
+- docker build --pull --cache-from sirehna/base-image-debian8-gcc492 --tag sirehna/base-image-debian8-gcc492 .
+
 after_script:
 - docker images
+
 after_success:
-- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker login -u $DOCKER_USERNAME -p
-  $DOCKER_PASSWORD ; docker push gjacquenot/ssc_build ; fi
+- if [[ "$TRAVIS_BRANCH" == "master" ]];
+  then
+  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ;
+  docker push sirehna/base-image-debian8-gcc492 ;
+  fi
+
 notifications:
   email: true
