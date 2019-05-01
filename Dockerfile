@@ -1,6 +1,9 @@
 FROM debian:8
 
-RUN set -x && \
+RUN printf "deb http://archive.debian.org/debian/ jessie main\n" > /etc/apt/sources.list && \
+    printf "deb-src http://archive.debian.org/debian/ jessie main\n" >> /etc/apt/sources.list && \
+    printf "deb http://security.debian.org jessie/updates main\n" >> /etc/apt/sources.list && \
+    printf "deb-src http://security.debian.org jessie/updates main\n" >> /etc/apt/sources.list && \
     apt-get update -yq && \
     apt-get install --yes --no-install-recommends \
         build-essential \
